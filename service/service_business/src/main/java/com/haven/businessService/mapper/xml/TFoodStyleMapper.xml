@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haven.businessService.mapper.TFoodStyleMapper">
+
+    <select id="selectStyleListByIdList" parameterType="list" resultType="com.haven.businessService.vo.StyleVo">
+        select id,title from t_food_style where id in
+        <foreach collection="idList" item="tid" open="(" separator="," close=")">
+            #{tid}
+        </foreach>
+    </select>
+</mapper>

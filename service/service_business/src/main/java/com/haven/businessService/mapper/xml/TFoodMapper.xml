@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.haven.businessService.mapper.TFoodMapper">
+
+    <select id="selectStyleIdList" parameterType="string" resultType="string">
+        SELECT DISTINCT(style_id) FROM `t_food` where business_id=#{bsid} and is_deleted=0
+    </select>
+</mapper>

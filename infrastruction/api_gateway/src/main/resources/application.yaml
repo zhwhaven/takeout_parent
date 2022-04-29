@@ -1,0 +1,61 @@
+server:
+  port: 8822
+spring:
+  application:
+    name: service-gateway
+    #使用服务发现路由
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: admin-service
+          uri: lb://admin-service
+          predicates:
+          - Path=/adminservice/**
+
+        - id: business-service
+          uri: lb://business-service
+          predicates:
+          - Path=/businessservice/**
+
+        - id: cms-service
+          uri: lb://cms-service
+          predicates:
+          - Path=/cmsservice/**
+
+        - id: shopcar-service
+          uri: lb://shopcar-service
+          predicates:
+          - Path=/shopcarservice/**
+
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+          - Path=/orderservice/**
+
+        - id: service-oss
+          uri: lb://service-oss
+          predicates:
+          - Path=/eduoss/**
+
+        - id: sms-service
+          uri: lb://sms-service
+          predicates:
+          - Path=/smsservice/**
+        - id: member-service
+          uri: lb://member-service
+          predicates:
+          - Path=/memberservice/**
+
+        - id: sms-service
+          uri: lb://service-vod
+          predicates:
+          - Path=/eduvod/**
+    #nacos地址
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+    #设置路由
