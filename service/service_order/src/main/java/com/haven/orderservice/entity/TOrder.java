@@ -67,6 +67,18 @@ public class TOrder implements Serializable {
     @ApiModelProperty(value = "评分")
     private Integer score;
 
+    @ApiModelProperty(value = "配送员id")
+    private String curierId;
+
+    @ApiModelProperty(value = "配送员接单开始")
+    private String cstartTime;
+
+    @ApiModelProperty(value = "配送员送达")
+    private String cendTime;
+
+    @ApiModelProperty(value = "店铺的地址")
+    private String storeAddress;
+
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     @TableLogic
     private Boolean isDeleted;

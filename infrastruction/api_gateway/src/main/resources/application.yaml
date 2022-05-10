@@ -44,15 +44,16 @@ spring:
           uri: lb://sms-service
           predicates:
           - Path=/smsservice/**
+
         - id: member-service
           uri: lb://member-service
           predicates:
           - Path=/memberservice/**
 
-        - id: sms-service
-          uri: lb://service-vod
+        - id: curier-service
+          uri: lb://curier-service
           predicates:
-          - Path=/eduvod/**
+          - Path=/curierservice/**
     #nacos地址
     nacos:
       discovery:

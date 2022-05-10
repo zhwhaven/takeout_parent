@@ -20,6 +20,8 @@
         <module>service_member</module>
         <module>service_shopcar</module>
         <module>service_order</module>
+        <module>service_quartz</module>
+        <module>service_curier</module>
     </modules>
     <dependencies>
         <dependency>

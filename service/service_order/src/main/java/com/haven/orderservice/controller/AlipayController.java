@@ -47,28 +47,34 @@ public class AlipayController {
             String tradeNo = params.get("out_trade_no");
             String gmtPayment = params.get("gmt_payment");
 
+//            System.out.println("test:"+Factory.Payment.Common().verifyNotify(params));
             // 支付宝验签
-            if (Factory.Payment.Common().verifyNotify(params)) {
-                // 验签通过
-                System.out.println("交易名称: " + params.get("subject"));
-                System.out.println("交易状态: " + params.get("trade_status"));
-                System.out.println("支付宝交易凭证号: " + params.get("trade_no"));
-                System.out.println("商户订单号: " + params.get("out_trade_no"));
-                System.out.println("交易金额: " + params.get("total_amount"));
-                System.out.println("买家在支付宝唯一id: " + params.get("buyer_id"));
-                System.out.println("买家付款时间: " + params.get("gmt_payment"));
-                System.out.println("买家付款金额: " + params.get("buyer_pay_amount"));
+//            if (Factory.Payment.Common().verifyNotify(params)) {
+//                // 验签通过
+//                System.out.println("交易名称: " + params.get("subject"));
+//                System.out.println("交易状态: " + params.get("trade_status"));
+//                System.out.println("支付宝交易凭证号: " + params.get("trade_no"));
+//                System.out.println("商户订单号: " + params.get("out_trade_no"));
+//                System.out.println("交易金额: " + params.get("total_amount"));
+//                System.out.println("买家在支付宝唯一id: " + params.get("buyer_id"));
+//                System.out.println("买家付款时间: " + params.get("gmt_payment"));
+//                System.out.println("买家付款金额: " + params.get("buyer_pay_amount"));
+//
+//                System.out.println("交易名称"+params.get("subject"));
+//
+//                // 更新订单未已支付
+////                orderMapper.updateState(tradeNo, 1, gmtPayment);
+//                String orderid = params.get("subject");
+//
+//                TOrder order = orderService.getById(orderid);
+//                order.setOrderStatus(1);
+//                orderService.updateById(order);
+//            }
+            String orderid = params.get("subject");
 
-                System.out.println("交易名称"+params.get("subject"));
-
-                // 更新订单未已支付
-//                orderMapper.updateState(tradeNo, 1, gmtPayment);
-                String orderid = params.get("subject");
-
-                TOrder order = orderService.getById(orderid);
-                order.setOrderStatus(1);
-                orderService.updateById(order);
-            }
+            orderService.pay(orderid);
+//            order.setOrderStatus(1);
+//            orderService.updateById(order);
         }
         return "success";
     }

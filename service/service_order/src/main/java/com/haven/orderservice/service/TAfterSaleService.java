@@ -2,6 +2,7 @@ package com.haven.orderservice.service;
 
 import com.haven.orderservice.entity.TAfterSale;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.haven.orderservice.vo.OrderAndSonOrderVo;
 
 /**
  * <p>
@@ -13,4 +14,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface TAfterSaleService extends IService<TAfterSale> {
 
+    void addAfterSale(TAfterSale afterSale);
+
+    OrderAndSonOrderVo selectOrderMessageById(String id);
+
+    Boolean agreeById(String id);
+
+    Boolean refuseById(String id);
 }

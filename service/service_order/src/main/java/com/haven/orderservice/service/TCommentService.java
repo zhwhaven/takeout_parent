@@ -13,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface TCommentService extends IService<TComment> {
 
+    void addComment(TComment comment);
 }

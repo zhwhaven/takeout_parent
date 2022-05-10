@@ -49,6 +49,9 @@ public class TAfterSale implements Serializable {
     @ApiModelProperty(value = "商家id")
     private String businessId;
 
+    @ApiModelProperty(value = "配送员id")
+    private String curierId;
+
     @ApiModelProperty(value = "食品id")
     private String foodId;
 
