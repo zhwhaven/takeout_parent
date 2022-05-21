@@ -1,7 +1,9 @@
 package com.haven.businessService.service.impl;
 
+import com.haven.businessService.entity.TBusiness;
 import com.haven.businessService.entity.TBussinessStore;
 import com.haven.businessService.entity.TFood;
+import com.haven.businessService.mapper.TBusinessMapper;
 import com.haven.businessService.mapper.TBussinessStoreMapper;
 import com.haven.businessService.mapper.TFoodMapper;
 import com.haven.businessService.service.TFoodService;
@@ -22,6 +24,8 @@ public class TFoodServiceImpl extends ServiceImpl<TFoodMapper, TFood> implements
 
     @Autowired
     TBussinessStoreMapper storeMapper;
+    @Autowired
+    TBusinessMapper businessMapper;
     @Override
     public Boolean deleteFoodInventory(String foodId, Integer count) {
         TFood tFood = baseMapper.selectById(foodId);
@@ -40,7 +44,17 @@ public class TFoodServiceImpl extends ServiceImpl<TFoodMapper, TFood> implements
             store.setFoodCount(storeFoodCount);
             int i1 = storeMapper.updateById(store);
             if(i1==1){
-                return true;
+//                增加总订单数
+                TBusiness tBusiness = businessMapper.selectById(businessId);
+                Integer orderNumber = tBusiness.getOrderNumber()+1;
+                tBusiness.setOrderNumber(orderNumber);
+                int i2 = businessMapper.updateById(tBusiness);
+                if(i2==1){
+                    return true;
+                }else{
+                    return false;
+                }
+
             }else {
                 return false;
             }

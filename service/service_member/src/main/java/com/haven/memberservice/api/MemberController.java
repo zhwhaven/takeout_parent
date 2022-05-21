@@ -5,9 +5,11 @@ import com.haven.memberservice.service.TMemberService;
 import com.haven.memberservice.vo.LoginVo;
 import com.haven.memberservice.vo.RegisterVo;
 import com.haven.utilscommon.util.JwtUtils;
+import com.haven.utilscommon.vo.MemberVo;
 import com.haven.utilscommon.vo.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +32,27 @@ public class MemberController {
         String token = memberService.login(loginVo);
         return R.ok().data("token",token);
     }
-
     @ApiOperation("通过token查询详情")
     @GetMapping("/selectBytoken")
     public R selectBytoken(HttpServletRequest request){
-
         TMember member=memberService.selectBytoken(request);
-
         return R.ok().data("member",member);
     }
+    @ApiOperation("查看用户详情")
+    @GetMapping("selectById/{id}")
+    public R selectById(@PathVariable String id){
+        TMember tmember = memberService.getById(id);
+        return R.ok().data("member",tmember);
+    }
 
+    @ApiOperation("修改用户详情")
+    @PostMapping("updateMember")
+    public R updateMember(@RequestBody TMember member){
+        boolean b = memberService.updateById(member);
+        if(b){
+            return R.ok();
+        }else{
+            return R.error();
+        }
+    }
 }

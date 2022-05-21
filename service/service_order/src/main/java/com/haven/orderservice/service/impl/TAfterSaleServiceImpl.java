@@ -71,7 +71,7 @@ public class TAfterSaleServiceImpl extends ServiceImpl<TAfterSaleMapper, TAfterS
         orderAndSonOrderVo.setCourierVo(courierVo);
         return orderAndSonOrderVo;
     }
-//同意退款
+//同意退款,商家全责
     @Override
     public Boolean agreeById(String id) {
         TAfterSale tAfterSale = baseMapper.selectById(id);
@@ -82,14 +82,18 @@ public class TAfterSaleServiceImpl extends ServiceImpl<TAfterSaleMapper, TAfterS
             String orderId = tAfterSale.getOrderId();
             TOrder order = orderService.getById(orderId);
             if(order!=null)
-            order.setOrderStatus(8);
+            order.setOrderStatus(9);
             boolean b = orderService.updateById(order);
-            return b;
+            if(b){
+//                增加商家的坏单数
+                Boolean aBoolean = storeClient.addBadNumber(order.getBusinessId());
+                return aBoolean;
+            }else {
+                return false;
+            }
         }else{
             return false;
         }
-
-
     }
 //拒绝退款
     @Override
@@ -102,9 +106,33 @@ public class TAfterSaleServiceImpl extends ServiceImpl<TAfterSaleMapper, TAfterS
             String orderId = tAfterSale.getOrderId();
             TOrder order = orderService.getById(orderId);
             if(order!=null)
-            order.setOrderStatus(9);
+            order.setOrderStatus(8);
             boolean b = orderService.updateById(order);
             return b;
+        }else{
+            return false;
+        }
+    }
+    //同意退款,骑手全责
+    @Override
+    public Boolean agreeByCourierId(String id) {
+        TAfterSale tAfterSale = baseMapper.selectById(id);
+        if(tAfterSale!=null)
+            tAfterSale.setApplyStatus(1);
+        int i = baseMapper.updateById(tAfterSale);
+        if(i==1){
+            String orderId = tAfterSale.getOrderId();
+            TOrder order = orderService.getById(orderId);
+            if(order!=null)
+                order.setOrderStatus(11);
+            boolean b = orderService.updateById(order);
+            if(b){
+//                增加骑手的坏单数
+                Boolean aBoolean = courierClient.addBadNumber(order.getCurierId());
+                return aBoolean;
+            }else {
+                return false;
+            }
         }else{
             return false;
         }

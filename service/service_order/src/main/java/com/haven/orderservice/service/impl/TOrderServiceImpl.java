@@ -362,7 +362,10 @@ public class TOrderServiceImpl extends ServiceImpl<TOrderMapper, TOrder> impleme
         tOrder.setCendTime(TimeUtils.getNowTime());
         int i = baseMapper.updateById(tOrder);
         if(i==1)
-            return true;
+        {
+            Boolean aBoolean = courierClient.addOrderNumber(cid);
+            return aBoolean;
+        }
         else
             return false;
     }

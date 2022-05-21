@@ -21,4 +21,6 @@ public interface TAfterSaleService extends IService<TAfterSale> {
     Boolean agreeById(String id);
 
     Boolean refuseById(String id);
+
+    Boolean agreeByCourierId(String id);
 }

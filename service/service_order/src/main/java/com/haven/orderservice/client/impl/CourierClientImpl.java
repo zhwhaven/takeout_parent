@@ -10,4 +10,14 @@ public class CourierClientImpl implements CourierClient {
     public CourierVo selectById(String id) {
         return null;
     }
+
+    @Override
+    public Boolean addOrderNumber(String id) {
+        return null;
+    }
+
+    @Override
+    public Boolean addBadNumber(String id) {
+        return null;
+    }
 }

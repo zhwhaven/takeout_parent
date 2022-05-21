@@ -58,6 +58,12 @@ public class TBusiness implements Serializable {
     @ApiModelProperty(value = "申请描述")
     private String applyDescribe;
 
+    @ApiModelProperty(value = "总订单数")
+    private Integer orderNumber;
+
+    @ApiModelProperty(value = "坏单数")
+    private Integer badNumber;
+
     @ApiModelProperty(value = "申请成功为1，  0不成功，即在申请中")
     private Boolean isApply;
 

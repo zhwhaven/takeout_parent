@@ -15,4 +15,12 @@ public interface CourierClient {
 //    @ApiOperation("外包团队的注册")
     @GetMapping("/curierservice/t-courier/selectById/{id}")
     public CourierVo selectById(@PathVariable String id);
+
+//    @ApiOperation("订单数量+1")
+    @GetMapping("/addOrderNumber/{id}")
+    public Boolean addOrderNumber(@PathVariable String id);
+
+//    @ApiOperation("坏的订单数量+1")
+    @GetMapping("/addBadNumber/{id}")
+    public Boolean addBadNumber(@PathVariable String id);
 }

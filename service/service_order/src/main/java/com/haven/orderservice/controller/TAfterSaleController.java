@@ -79,16 +79,25 @@ public class TAfterSaleController {
         return R.ok().data("orderAndSonOrderVo",orderAndSonOrderVo);
     }
 
-    @ApiOperation("同意退款")
-    @GetMapping("/agreeById/{id}")
-    public R agreeById(@PathVariable String id){
+    @ApiOperation("同意退款，商家全责")
+    @GetMapping("/agreeByBusinessId/{id}")
+    public R agreeByBusinessId(@PathVariable String id){
         Boolean a=afterSaleService.agreeById(id);
         if(a)
             return R.ok();
         else
             return R.error();
     }
-    @ApiOperation("拒绝退款")
+    @ApiOperation("同意退款，骑手全责")
+    @GetMapping("/agreeByCourierId/{id}")
+    public R agreeByCourierId(@PathVariable String id){
+        Boolean a=afterSaleService.agreeByCourierId(id);
+        if(a)
+            return R.ok();
+        else
+            return R.error();
+    }
+    @ApiOperation("拒绝退款,用户全责")
     @GetMapping("/refuseById/{id}")
     public R refuseById(@PathVariable String id){
         Boolean a=afterSaleService.refuseById(id);

@@ -50,6 +50,20 @@ public class ApiBusinessController {
         return R.ok().data("businessList",businessList);
     }
 
+    @ApiOperation("根据模糊的名字和地址所有的店铺信息")
+    @GetMapping("selectStoreByStoreName/{address}/{storeName}")
+    public R selectStoreByStoreName(@PathVariable("address") String address,@PathVariable String storeName){
+        QueryWrapper<TBussinessStore> wrapper=new QueryWrapper<>();
+        if(!StringUtils.isEmpty(address)){
+            wrapper.like("store_address",address);
+        }
+        if(!StringUtils.isEmpty(storeName)){
+            wrapper.like("store_name",storeName);
+        }
+        List<TBussinessStore> businessList = storeService.list(wrapper);
+        return R.ok().data("businessList",businessList);
+    }
+
     @ApiOperation("根据地址查询销售前八的店铺")
     @GetMapping("selectStoreRankByAddress/{address}")
     public R selectStoreRankByAddress(@PathVariable("address") String address){
@@ -58,6 +72,7 @@ public class ApiBusinessController {
             wrapper.like("store_address",address);
         }
         wrapper.last("limit 8");
+        wrapper.orderByDesc("food_count");
         List<TBussinessStore> storeRankList = storeService.list(wrapper);
         return R.ok().data("storeRankList",storeRankList);
     }

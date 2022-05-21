@@ -49,10 +49,18 @@ public class TBusiness implements Serializable {
     @ApiModelProperty(value = "申请描述")
     private String applyDescribe;
 
-
+    @ApiModelProperty(value = "年龄")
     private Integer age;
 
+    @ApiModelProperty(value = "身份证手机号码")
     private String idcardNumber;
+
+    @ApiModelProperty(value = "总订单数")
+    private Integer orderNumber;
+
+    @ApiModelProperty(value = "坏单数")
+    private Integer badNumber;
+
 
     @ApiModelProperty(value = "申请成功为1，否则为0")
     private Boolean isApply;

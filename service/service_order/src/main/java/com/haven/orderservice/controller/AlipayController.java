@@ -20,7 +20,6 @@ public class AlipayController {
     TOrderService orderService;
     @GetMapping("/pay")
     public String pay(AliPay aliPay) {
-        System.out.println(aliPay.getTotalAmount());
         AlipayTradePagePayResponse response;
         try {
             //  发起API调用（以创建当面付收款二维码为例）

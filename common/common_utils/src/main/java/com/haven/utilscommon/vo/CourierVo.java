@@ -48,6 +48,12 @@ public class CourierVo {
 
     private String idcardNumber;
 
+    @ApiModelProperty(value = "总订单数")
+    private Integer orderNumber;
+
+    @ApiModelProperty(value = "坏单数")
+    private Integer badNumber;
+
     @ApiModelProperty(value = "申请成功为1，否则为0")
     private Boolean isApply;
 }

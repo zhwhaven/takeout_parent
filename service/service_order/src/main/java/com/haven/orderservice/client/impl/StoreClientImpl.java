@@ -10,4 +10,9 @@ public class StoreClientImpl implements StoreClient {
     public StoreVo selectStoreById(String id) {
         return null;
     }
+
+    @Override
+    public Boolean addBadNumber(String id) {
+        return null;
+    }
 }
