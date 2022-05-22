@@ -2,6 +2,7 @@ package com.haven.orderservice.mapper;
 
 import com.haven.orderservice.entity.TSonOrder;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author testjava
  * @since 2022-04-25
  */
+@Mapper
 public interface TSonOrderMapper extends BaseMapper<TSonOrder> {
 
 }

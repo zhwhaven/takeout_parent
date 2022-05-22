@@ -47,12 +47,16 @@ public class AclUserController {
         return R.ok().data("aclUser",aclUser);
     }
     @ApiOperation("权限")
-
     @GetMapping("/info")
     public R getInfo(){
         return R.ok().data("roles","admin")
                 .data("name","admin")
                 .data("avatar","https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif");
+    }
+    @ApiOperation("注销")
+    @GetMapping("/logout")
+    public R logout(){
+        return R.ok();
     }
 
 

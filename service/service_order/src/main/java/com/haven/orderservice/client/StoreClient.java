@@ -17,6 +17,6 @@ public interface StoreClient {
     public StoreVo selectStoreById(@PathVariable String id);
 
 //    @ApiOperation("坏单数量+1")
-    @GetMapping("addBadNumber/{id}")
+    @GetMapping("/businessservice/order-store/addBadNumber/{id}")
     public Boolean addBadNumber(@PathVariable String id);
 }

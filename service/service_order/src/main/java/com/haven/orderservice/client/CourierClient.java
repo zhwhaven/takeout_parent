@@ -17,10 +17,10 @@ public interface CourierClient {
     public CourierVo selectById(@PathVariable String id);
 
 //    @ApiOperation("订单数量+1")
-    @GetMapping("/addOrderNumber/{id}")
+    @GetMapping("/curierservice/t-courier/addOrderNumber/{id}")
     public Boolean addOrderNumber(@PathVariable String id);
 
 //    @ApiOperation("坏的订单数量+1")
-    @GetMapping("/addBadNumber/{id}")
+    @GetMapping("/curierservice/t-courier/addBadNumber/{id}")
     public Boolean addBadNumber(@PathVariable String id);
 }

@@ -83,7 +83,7 @@ public class TAfterSaleController {
     @GetMapping("/agreeByBusinessId/{id}")
     public R agreeByBusinessId(@PathVariable String id){
         Boolean a=afterSaleService.agreeById(id);
-        if(a)
+        if(a!=null&&a==true)
             return R.ok();
         else
             return R.error();
@@ -92,7 +92,7 @@ public class TAfterSaleController {
     @GetMapping("/agreeByCourierId/{id}")
     public R agreeByCourierId(@PathVariable String id){
         Boolean a=afterSaleService.agreeByCourierId(id);
-        if(a)
+        if(a!=null&&a==true)
             return R.ok();
         else
             return R.error();
@@ -101,7 +101,7 @@ public class TAfterSaleController {
     @GetMapping("/refuseById/{id}")
     public R refuseById(@PathVariable String id){
         Boolean a=afterSaleService.refuseById(id);
-        if(a)
+        if(a!=null&&a==true)
             return R.ok();
         else
             return R.error();

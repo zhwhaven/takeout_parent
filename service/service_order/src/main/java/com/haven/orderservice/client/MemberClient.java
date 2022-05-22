@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Component
 @FeignClient(value = "member-service",fallback = MemberClientImpl.class)
 public interface MemberClient {
-    @GetMapping("selectById/{id}")
+    @GetMapping("/memberservice/t-member/selectById/{id}")
     public MemberVo selectById(@PathVariable String id);
 }
